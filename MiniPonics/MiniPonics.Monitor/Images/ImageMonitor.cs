@@ -9,7 +9,7 @@ namespace MiniPonics.Monitor.Images
 {
     public class ImageMonitor : BackgroundService
     {
-        static string Schedule => "*/5 * * * *";
+        static string Schedule => "*/30 * * * *";
         readonly CrontabSchedule schedule;
         DateTime nextRun;
         readonly IHomeEventsImageSender homeEventsImageSender;
@@ -27,7 +27,7 @@ namespace MiniPonics.Monitor.Images
             do
             {
                 var now = DateTime.Now;
-                if (now.Hour >= 6 && now.Hour <= 19 && now > nextRun)
+                if (now.Hour >= 6 && now.Hour <= 18 && now > nextRun)
                 {
                     Console.WriteLine("Capturing image.");
                     try
